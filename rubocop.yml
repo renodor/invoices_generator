@@ -1,0 +1,6 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/migrate/*'
+    - 'bin/rails'
+    - 'node_modules/**/*'
