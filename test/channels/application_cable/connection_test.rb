@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase
+class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase # rubocop:disable Style/ClassAndModuleChildren
   # test "connects with cookies" do
   #   cookies.signed[:user_id] = 42
   #
