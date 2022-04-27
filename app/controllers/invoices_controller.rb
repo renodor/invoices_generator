@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update destroy]
 
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.ordered
   end
 
   def show; end
@@ -17,7 +17,10 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(invoice_params)
 
     if @invoice.save
-      redirect_to invoices_path, notice: 'Invoice was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to invoices_path, notice: 'Invoice was successfully created.' }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +38,11 @@ class InvoicesController < ApplicationController
 
   def destroy
     @invoice.destroy
-    redirect_to invoices_path, notice: 'Invoice was successfully destroyed.'
+
+    respond_to do |format|
+      format.html { redirect_to invoices_path, notice: 'Invoice was successfully destroyed.' }
+      format.turbo_stream
+    end
   end
 
   private

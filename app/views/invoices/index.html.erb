@@ -1,10 +1,15 @@
 <main class="container">
   <div class="header">
     <h1>Invoices</h1>
-    <%= link_to "New invoice",
+    <%= link_to 'New invoice',
                 new_invoice_path,
-                class: "btn btn--primary" %>
+                class: 'btn btn--primary',
+                data: { turbo_frame: dom_id(Invoice.new) } %>
   </div>
 
-  <%= render @invoices %>
+  <%= turbo_frame_tag Invoice.new %>
+
+  <%= turbo_frame_tag 'invoices' do %>
+    <%= render @invoices %>
+  <% end %>
 </main>

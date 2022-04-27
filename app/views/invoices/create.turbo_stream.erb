@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend 'invoices' do %>
+  <%= render partial: 'invoices/invoice', locals: { invoice: @invoice } %>
+<% end %>
+<%#= could be written shorten like that: "turbo_stream.prepend "quotes", @quote" %>
+
+
+<%= turbo_stream.update Invoice.new, "" %>
