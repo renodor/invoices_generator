@@ -1,0 +1,9 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to invoice"), invoice_path(@invoice) %>
+
+  <div class="header">
+    <h1>Edit invoice</h1>
+  </div>
+
+  <%= render "form", invoice: @invoice %>
+</main>
