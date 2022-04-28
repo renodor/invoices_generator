@@ -12,6 +12,7 @@
   <%= turbo_frame_tag Invoice.new %>
 
   <%= turbo_frame_tag 'invoices' do %>
+    <%= render 'invoices/empty_state' %>
     <%= render @invoices %>
   <% end %>
 </main>
