@@ -4,6 +4,7 @@ require 'application_system_test_case'
 
 class InvoicesTest < ApplicationSystemTestCase
   setup do
+    login_as users(:accountant)
     @invoice = Invoice.ordered.first
   end
 

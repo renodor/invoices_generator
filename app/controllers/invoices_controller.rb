@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update destroy]
 
   def index
-    @invoices = Invoice.ordered
+    @invoices = current_company.invoices.ordered
   end
 
   def show; end
@@ -14,7 +14,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
+    @invoice = current_company.invoices.build(invoice_params)
 
     if @invoice.save
       respond_to do |format|
@@ -48,7 +48,7 @@ class InvoicesController < ApplicationController
   private
 
   def set_invoice
-    @invoice = Invoice.find(params[:id])
+    @invoice = current_company.invoices.find(params[:id])
   end
 
   def invoice_params

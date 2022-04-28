@@ -1,8 +1,11 @@
 first:
+  company: cool_company1
   name: First invoicee
 
 second:
+  company: cool_company1
   name: Second invoicee
 
 third:
+  company: cool_company1
   name: Third invoicee
