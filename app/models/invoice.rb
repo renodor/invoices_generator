@@ -2,6 +2,7 @@
 
 class Invoice < ApplicationRecord
   belongs_to :company
+  has_many :line_item_dates, dependent: :destroy
 
   validates :name, presence: true
 

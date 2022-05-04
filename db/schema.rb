@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_28_131527) do
-
+ActiveRecord::Schema.define(version: 2022_04_29_130213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +28,16 @@ ActiveRecord::Schema.define(version: 2022_04_28_131527) do
     t.index ["company_id"], name: "index_invoices_on_company_id"
   end
 
+  create_table "line_item_dates", force: :cascade do |t|
+    t.bigint "invoice_id", null: false
+    t.date "date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["date", "invoice_id"], name: "index_line_item_dates_on_date_and_invoice_id", unique: true
+    t.index ["date"], name: "index_line_item_dates_on_date"
+    t.index ["invoice_id"], name: "index_line_item_dates_on_invoice_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -44,5 +53,6 @@ ActiveRecord::Schema.define(version: 2022_04_28_131527) do
   end
 
   add_foreign_key "invoices", "companies"
+  add_foreign_key "line_item_dates", "invoices"
   add_foreign_key "users", "companies"
 end

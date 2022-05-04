@@ -16,8 +16,13 @@ en:
     labels:
       invoice:
         name: Name
+      line_item_date:
+        date: Date
   helpers:
     submit:
       invoice:
         create: Create invoice
         update: Update invoice
+      line_item_date:
+        create: Create date
+        update: Update date

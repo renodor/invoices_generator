@@ -7,7 +7,9 @@ class InvoicesController < ApplicationController
     @invoices = current_company.invoices.ordered
   end
 
-  def show; end
+  def show
+    @line_item_dates = @invoice.line_item_dates.ordered
+  end
 
   def new
     @invoice = Invoice.new
