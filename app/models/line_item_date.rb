@@ -2,6 +2,7 @@
 
 class LineItemDate < ApplicationRecord
   belongs_to :invoice
+  has_many :line_items, dependent: :destroy
 
   validates :date, presence: true, uniqueness: { scope: :invoice_id }
 

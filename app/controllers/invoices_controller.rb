@@ -8,7 +8,7 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    @line_item_dates = @invoice.line_item_dates.ordered
+    @line_item_dates = @invoice.line_item_dates.includes(:line_items).ordered
   end
 
   def new
