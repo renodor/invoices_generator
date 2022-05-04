@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container mb-xxxxl">
   <%= link_to sanitize("&larr; Back to invoices"), invoices_path %>
   <div class="header">
     <h1>
@@ -16,3 +16,7 @@
     <%= render @line_item_dates, invoice: @invoice %>
   <% end %>
 </main>
+
+<%= turbo_frame_tag dom_id(@invoice, :total) do %>
+  <%= render 'invoices/total', invoice: @invoice %>
+<% end %>

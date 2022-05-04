@@ -3,6 +3,7 @@
 class Invoice < ApplicationRecord
   belongs_to :company
   has_many :line_item_dates, dependent: :destroy
+  has_many :line_items, through: :line_item_dates
 
   validates :name, presence: true
 
@@ -19,4 +20,8 @@ class Invoice < ApplicationRecord
 
   # And previous callback needs to be scoped to company to avoid streaming invoices to users from other companies
   broadcasts_to ->(invoice) { [invoice.company, 'invoices'] }, inserts_by: :prepend
+
+  def total_price
+    line_items.sum(&:total_price)
+  end
 end
