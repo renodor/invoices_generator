@@ -39,7 +39,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to incoie_path(@incoie), notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to incoie_path(@invoice), notice: 'Item was successfully destroyed.' }
       format.turbo_stream { flash.now[:notice] = 'Item was successfully destroyed.' }
     end
   end
